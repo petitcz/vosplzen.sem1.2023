@@ -38,7 +38,7 @@ namespace vosplzen.sem1h1.Pages
                       Name = "Americo",
                       Lastname = "Vespucci",
                       Email = "americo.vespucci@volny.cz",
-                      Class = "Master"
+                      Class = "SPAIN01"
                   });
 
             Students.Add(
