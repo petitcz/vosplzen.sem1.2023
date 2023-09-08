@@ -12,7 +12,6 @@
         {
             get
             {
-
                 return (ClassFilterBy != null && ClassFilterBy.Length > 0) || (FullTextKey != null && FullTextKey.Length > 0);
 
             }
