@@ -19,18 +19,20 @@
 
         <form method="post" enctype="multipart/form-data">
             <div class="form-group input-group">
-                <input asp-for="FullTextKey" class="form-control" placeholder="hledat výraz" />
+                <input asp-for="Filter.FullTextKey" class="form-control" placeholder="hledat výraz" />
                 <button type="submit" class="input-group-append btn btn-primary">Hledej</button>
             </div>
+
+            <input hidden asp-for="Filter.ClassFilterBy" />
+            <input hidden asp-for="Filter.OrderBy" />
+            
         </form>
 
     </div>
 </div>
 
 
-
-
-@if (Model.FilterIsOn)
+@if (Model.Filter.IsOn)
 {
     <div class="row">
         <div class="col-md-6">
@@ -38,7 +40,6 @@
             <a asp-page="./Students">Zruš filtr</a>
         </div>
     </div>
-
 
 }
 

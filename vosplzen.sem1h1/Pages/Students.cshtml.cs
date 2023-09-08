@@ -9,43 +9,27 @@ namespace vosplzen.sem1h1.Pages
     {
 
         [BindProperty]
-        public string FullTextKey { get; set; } 
+        public StudentFilterDto Filter { get; set; } = new StudentFilterDto();
 
         public List<Student> Students { get; set; } = new List<Student>();
-
-        public bool FilterIsOn { get; set; }
+        
 
         public void OnGet(string orderby = "lastname", string classfilterby = "")
         {
-            Students = DataProvider.GetStudents(orderby, classfilterby);
+            Filter = new StudentFilterDto()
+            {
+                OrderBy = orderby,
+                ClassFilterBy = classfilterby
+            };
 
-            if (classfilterby.Length > 0)
-            {
-                Students = Students.Where(x => x.Class.Equals(classfilterby)).ToList();
-                FilterIsOn = true;
-            }
-            else
-            {
-                FilterIsOn = false;
-            }
+            Students = DataProvider.GetStudents(Filter);
 
         }
 
         public IActionResult OnPost()
         {
-            Students = DataProvider.GetStudents();
-
-            if (FullTextKey != null && FullTextKey.Length > 0)
-            {
-                Students = Students
-                    .Where(x => x.Lastname.Contains(FullTextKey) ||
-                    x.Name.Contains(FullTextKey) ||
-                    x.Class.Contains(FullTextKey)
-                    ).ToList();
-            }
-
+            Students = DataProvider.GetStudents(Filter);     
             return Page();
-
         }
 
     }
