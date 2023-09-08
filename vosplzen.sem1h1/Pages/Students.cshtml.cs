@@ -8,6 +8,9 @@ namespace vosplzen.sem1h1.Pages
     public class StudentsModel : PageModel
     {
 
+        [BindProperty]
+        public string FullTextKey { get; set; } 
+
         public List<Student> Students { get; set; } = new List<Student>();
 
         public bool FilterIsOn { get; set; }
@@ -27,5 +30,23 @@ namespace vosplzen.sem1h1.Pages
             }
 
         }
+
+        public IActionResult OnPost()
+        {
+            Students = DataProvider.GetStudents();
+
+            if (FullTextKey != null && FullTextKey.Length > 0)
+            {
+                Students = Students
+                    .Where(x => x.Lastname.Contains(FullTextKey) ||
+                    x.Name.Contains(FullTextKey) ||
+                    x.Class.Contains(FullTextKey)
+                    ).ToList();
+            }
+
+            return Page();
+
+        }
+
     }
 }

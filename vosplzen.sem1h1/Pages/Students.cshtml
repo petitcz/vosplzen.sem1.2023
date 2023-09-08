@@ -19,8 +19,8 @@
 
         <form method="post" enctype="multipart/form-data">
             <div class="form-group input-group">
-                <input class="form-control" placeholder="hledat výraz" />
-                <button class="input-group-append btn btn-primary">Hledej</button>
+                <input asp-for="FullTextKey" class="form-control" placeholder="hledat výraz" />
+                <button type="submit" class="input-group-append btn btn-primary">Hledej</button>
             </div>
         </form>
 

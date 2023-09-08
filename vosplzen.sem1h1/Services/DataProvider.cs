@@ -5,8 +5,6 @@ namespace vosplzen.sem1h1.Services
     public class DataProvider
     {
 
-
-
         public static List<Student> GetStudents(string orderby = "lastname", string classfilterby = "")
         {
             List<Student> Students = new List<Student>();
