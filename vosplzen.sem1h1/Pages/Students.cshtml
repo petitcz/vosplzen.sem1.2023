@@ -6,18 +6,36 @@
 <h1>Seznam studentů školy</h1>
 <hr />
 
+<label>Řadit dle</label>
+<a asp-page="./Students" asp-route-orderby="lastname">příjmení</a> |
+<a asp-page="./Students" asp-route-orderby="name">jméno</a> |
+<a asp-page="./Students" asp-route-orderby="email">e-mail</a> |
+<a asp-page="./Students" asp-route-orderby="class">třída</a>
+
+
+@if (Model.FilterIsOn)
+{
+    
+    <br />
+    <label>Filtr: </label>
+    <a asp-page="./Students">Zruš filtr</a>
+}
+
+<hr />
+
+
 @foreach (var item in Model.Students)
 {
     <div class="row">
         <div class="col-md-12">
-           <dl>
-               <dt>Jméno a příjmení</dt>
-               <dd>@item.Name @item.Lastname</dd>
-               <dt>E-mail</dt>
-               <dd>@item.Email</dd>
-               <dt>Třída</dt>
-               <dd>@item.Class</dd>
-           </dl>
+            <dl>
+                <dt>Jméno a příjmení</dt>
+                <dd>@item.Name @item.Lastname</dd>
+                <dt>E-mail</dt>
+                <dd>@item.Email</dd>
+                <dt>Třída</dt>
+                <dd><a asp-page="./Students" asp-route-orderby="lastname" asp-route-classfilterby="@item.Class"> @item.Class</a></dd>
+            </dl>
         </div>
     </div>
 
