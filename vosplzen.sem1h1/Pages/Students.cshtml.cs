@@ -10,7 +10,7 @@ namespace vosplzen.sem1h1.Pages
         public List<Student> Students { get; set; }
         public bool FilterIsOn { get; set; }
 
-        public void OnGet(string orderby = "lastname", string classfilterby = "")
+        public void OnGet(string orderby = "lastname", string classfilterby = null)
         {
             Students = new List<Student>();
 
@@ -69,7 +69,7 @@ namespace vosplzen.sem1h1.Pages
             }
 
 
-            if(classfilterby.Length > 0)
+            if (classfilterby is { })
             {
                 Students = Students.Where(x => x.Class.Equals(classfilterby)).ToList();
                 FilterIsOn = true;
