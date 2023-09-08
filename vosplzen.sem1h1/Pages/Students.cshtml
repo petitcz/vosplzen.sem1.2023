@@ -1,0 +1,29 @@
+﻿@page
+@model vosplzen.sem1h1.Pages.StudentsModel
+@{
+}
+
+<h1>Seznam studentů školy</h1>
+<hr />
+
+@foreach (var item in Model.Students)
+{
+    <div class="row">
+        <div class="col-md-12">
+           <dl>
+               <dt>Jméno a příjmení</dt>
+               <dd>@item.Name @item.Lastname</dd>
+               <dt>E-mail</dt>
+               <dd>@item.Email</dd>
+               <dt>Třída</dt>
+               <dd>@item.Class</dd>
+           </dl>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+        </div>
+    </div>
+}
