@@ -10,7 +10,7 @@ namespace vosplzen.sem1h1.Pages
         public List<Student> Students { get; set; }
         public bool FilterIsOn { get; set; }
 
-        public void OnGet(string orderby = "lastname", string classfilterby = null)
+        public void OnGet(string orderby = "lastname", string classfilterby)
         {
             Students = new List<Student>();
 
