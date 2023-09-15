@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace vosplzen.sem1h2.Data.Model
@@ -23,5 +24,12 @@ namespace vosplzen.sem1h2.Data.Model
         [DisplayName("Vytvořeno")]
         public DateTime Created { get; set; }
 
+        [DisplayName("Celé jméno")]
+        public string FullName
+        {
+            get { return $"{Surname} {Name}"; }
+
+        }
     }
+
 }

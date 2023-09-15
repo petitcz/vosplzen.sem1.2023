@@ -1,0 +1,17 @@
+﻿@page
+@model vosplzen.sem1h2.Pages.QuestionnairePages.IndexModel
+@{
+}
+
+<h1>Vyplněné dotazníky (@Model.Questionnaires.Count())</h1>
+
+@foreach (var item in Model.Questionnaires)
+{
+    <hr />
+    <div class="row">
+        <div class="col">@item.FullName</div>
+        <div class="col">
+            @item.Rating/5
+        </div>
+    </div>
+}
