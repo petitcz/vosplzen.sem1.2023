@@ -25,7 +25,10 @@ namespace vosplzen.sem1h2.Pages
                 return Page();
             }
 
-            Message = $"Děkujeme za vyplnění dotazníku, Vaše hodnocení je: {Questionnaire.Rating}/5.";
+            Questionnaire.Created = DateTime.Now;
+
+            Message = $"Děkujeme za vyplnění dotazníku, Vaše hodnocení je: {Questionnaire.Rating}/5. Hodnoceno {Questionnaire.Created.ToString("dd.MM.yyyy H:m")}";
+            
             Questionnaire = new Questionnaire();
 
             ModelState.Clear();
