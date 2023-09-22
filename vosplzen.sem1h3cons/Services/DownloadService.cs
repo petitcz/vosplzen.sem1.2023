@@ -24,7 +24,11 @@ namespace vosplzen.sem1h3cons.Services
         {
             byte[] imageBytes = await _httpClient.GetByteArrayAsync(imageUrl);
 
-            Directory.CreateDirectory(downloadPath);
+            if(Directory.Exists(downloadPath))
+            {
+                Directory.CreateDirectory(downloadPath);
+            }
+   
 
             string fileName = GenerateUniqueFileName();
             string filePath = Path.Combine(downloadPath, fileName);
