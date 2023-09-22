@@ -1,6 +1,4 @@
 
-
-
 using vosplzen.sem1h2.Data;
 using vosplzen.sem1h2.Data.Model;
 using vosplzen.sem1h2.Generic;

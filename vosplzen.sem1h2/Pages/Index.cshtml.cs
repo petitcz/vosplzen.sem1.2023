@@ -30,6 +30,13 @@ namespace vosplzen.sem1h2.Pages
 
             Questionnaire.Created = DateTime.Now;
 
+            var any = _context.Questionnaires.Where(x => x.Email == Questionnaire.Email).Any();
+            if(any)
+            {
+                Message = "Tento e-mail už byl jednou použit a tak dotazník nemůžeme znovu uložit, děkujeme.";
+                return Page();
+            }
+
             _context.Questionnaires.Add(Questionnaire);
             _context.SaveChanges();
 

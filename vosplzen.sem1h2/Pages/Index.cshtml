@@ -32,6 +32,13 @@
                 <span asp-validation-for="Questionnaire.Surname" class="text-danger"></span>
             </div>
 
+
+            <div class="form-group">
+                <label asp-for="Questionnaire.Email" class="control-label"></label>
+                <input asp-for="Questionnaire.Email" class="form-control" />
+                <span asp-validation-for="Questionnaire.Email" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Questionnaire.Rating" class="control-label"></label>
                 <input asp-for="Questionnaire.Rating" class="form-control" max="5" min="1" value="3" />
