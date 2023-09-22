@@ -6,7 +6,7 @@
 
 <center></center>
 
-<form method="post" enctype="multipart/form-data">
+<form method="post" enctype="multipart/form-data" asp-page-handler="Create">
     <button class="btn btn-primary" type="submit">Načti nová data (@Model.Students.Count())</button>
 </form>
 
@@ -20,10 +20,10 @@
             <th>Příjmení</th>
             <th>E-mail</th>
             <th>Obrázek</th>
+            <th>Akce</th>
         </tr>
     </thead>
     <tbody>
-
         @foreach (var item in Model.Students)
         {
             <tr>
@@ -31,10 +31,16 @@
                 <td>@item.LastName</td>
                 <td>@item.Email</td>
                 <td><img src="@item.ImageBase64" alt="Obrázek"></td>
+                <td>
+                    <form asp-page-handler="Delete" method="post">
+                        <input type="hidden" asp-for="IdToDelete" value="@item.Id" />
+                        <button type="submit" class="btn btn-danger font-bold">X</button>
+                    </form>
+                </td>
             </tr>
         }
-
     </tbody>
 </table>
+
 
 

@@ -7,5 +7,7 @@ namespace vosplzen.sem1h3.Services.Interfaces
         Task CreateNewProfile();
 
         Task<List<Student>> GetData();
+
+        Task DeleteStudent(int id);
     }
 }

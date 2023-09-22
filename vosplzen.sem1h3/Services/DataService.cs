@@ -28,12 +28,21 @@ namespace vosplzen.sem1h3cons.Services
             _context = context;
         }
 
+        public async Task DeleteStudent(int id)
+        {
+            var removal = await _context.Students.Where(x => x.Id == id).FirstOrDefaultAsync();
+            if (removal == null) { return; }
+
+            _context.Students.Remove(removal);
+            await _context.SaveChangesAsync();
+        }
+
         public async Task<List<Student>> GetData()
         {
             var list = await _context.Students.ToListAsync();
             return list;
         }
-        
+
         public async Task CreateNewProfile()
         {
             byte[] imageBytes = await _httpClient.GetByteArrayAsync(@"https://thispersondoesnotexist.com/");
@@ -49,7 +58,7 @@ namespace vosplzen.sem1h3cons.Services
                     ImageBlob = imageBytes,
                     Email = RemoveDiacritics(name) + ' ' + RemoveDiacritics(lastname)
 
-                });;
+                }); ;
 
             await _context.SaveChangesAsync();
 

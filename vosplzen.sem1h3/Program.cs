@@ -19,7 +19,7 @@ namespace vosplzen.sem1h3
             );
             });
 
-            builder.Services.AddTransient<IDataService, DataService>();
+            builder.Services.AddScoped<IDataService, DataService>();
 
 
             // Add services to the container.

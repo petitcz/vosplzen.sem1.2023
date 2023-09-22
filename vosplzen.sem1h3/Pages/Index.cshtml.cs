@@ -11,7 +11,10 @@ namespace vosplzen.sem1h3.Pages
         private readonly ILogger<IndexModel> _logger;
         private readonly IDataService _dataService;
 
-        public List<Student> Students { get; set; }
+        public List<Student> Students { get; set; } = new List<Student>();
+
+        [BindProperty]
+        public int IdToDelete { get; set; } = 0;
 
         public IndexModel(ILogger<IndexModel> logger, IDataService dataService)
         {
@@ -23,10 +26,16 @@ namespace vosplzen.sem1h3.Pages
         {
             return await Reload();
         }
-        public async Task<IActionResult> OnPost()
+        public async Task<IActionResult> OnPostCreate()
         {
 
             await _dataService.CreateNewProfile();
+            return await Reload();
+        }
+
+        public async Task<IActionResult> OnPostDelete()
+        {
+            await _dataService.DeleteStudent(IdToDelete);
             return await Reload();
         }
 
