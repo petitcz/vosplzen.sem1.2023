@@ -1,0 +1,40 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<center></center>
+
+<form method="post" enctype="multipart/form-data">
+    <button class="btn btn-primary" type="submit">Načti nová data (@Model.Students.Count())</button>
+</form>
+
+<hr />
+
+
+<table>
+    <thead>
+        <tr>
+            <th>Jméno</th>
+            <th>Příjmení</th>
+            <th>E-mail</th>
+            <th>Obrázek</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var item in Model.Students)
+        {
+            <tr>
+                <td>@item.Name</td>
+                <td>@item.LastName</td>
+                <td>@item.Email</td>
+                <td><img src="@item.ImageBase64" alt="Obrázek"></td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+
+

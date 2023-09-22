@@ -13,7 +13,6 @@ namespace vosplzen.sem1h3cons
                 {
                     await downloader.DownloadImageAsync("https://thispersondoesnotexist.com/", @"C:\_temp\ThisPersonDoesNotExist\");
                 }
-
                 
             }
 
